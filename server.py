@@ -21,7 +21,7 @@ def offLED(pin):
 @app.route("/", methods=["GET"])
 def led():
 	if request.method == 'GET':
-		return render_template('led.html')
+		return render_template('led.html', mode=GPIO.getmode())
 
 @app.route("/pin_on", methods=["POST"])
 def led_on():
