@@ -58,6 +58,7 @@ def pwm():
 def pwmon():
 	if request.method == 'POST':
 		body = request.get_json()
+		GPIO.setmode(GPIO.BCM)
 		GPIO.setup(int(body.get('led')),GPIO.OUT)
 		p=GPIO.PWM(int(body.get('led')),100)
 		p.start(0)
