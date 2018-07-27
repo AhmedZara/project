@@ -1,3 +1,9 @@
+from flask import Flask, request, jsonify, render_template, url_for
+import RPi.GPIO as GPIO
+
+app = Flask(__name__)
+GPIO.setmode(GPIO.BCM)
+
 @app.route("/pwm", methods=["GET"])
 def pwm():
 	if request.method == 'GET':
