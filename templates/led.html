@@ -11,9 +11,9 @@
     <title>ZARA</title>
   </head>
   <body>
-   <div class="container" id="app">
+   <div class="container" id="LED">
       <h1>LED</h1>
-      <h1>{{mode}}</h1>
+      
       <div>
         <div class="form-group">
           <label>Pin</label>
@@ -34,37 +34,38 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
     <script>
-    var app = new Vue({
-        el: '#app',
+    var ledApp = new Vue({
+        el:'#LED',
         data: {
           current: {}
         },
         methods: {
-          onLed: function (obj) {
-            console.log(obj.pin);
-            axios.post("/pin_on", {
-              pin:obj})
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+          onLED:function(obj){
+            console.log("ON was called")
+            axios.post('/pin_on', {
+        pin:obj,
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+      .catch(function (error) {
+        console.log(error);
+         });
           },
-          offLed: function (obj) {
-            console.log(obj.pin);
-            axios.post("/pin_off",{
-              pin: obj})
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-        }
+          offLED: function(obj){
+            console.log("Off was called")
+            axios.post('/pin_off', {
+        pin:obj,
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+      .catch(function (error) {
+        console.log(error);
+         });
+          }   
       }
-   })
-
+      })
     </script>
   </body>
 </html> 
