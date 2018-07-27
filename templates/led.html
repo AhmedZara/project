@@ -40,10 +40,10 @@
           current: {}
         },
         methods: {
-          onLED:function(pin){
+          onLED:function(obj){
             console.log("ON was called")
             axios.post('/pin_on', {
-        pin:pin,
+        pin:obj,
         })
         .then(function (response) {
         console.log(response.data);
@@ -52,10 +52,10 @@
         console.log(error);
          });
           },
-          offLED: function(pin){
+          offLED: function(obj){
             console.log("Off was called")
             axios.post('/pin_off', {
-        pin:pin,
+        pin:obj,
         })
         .then(function (response) {
         console.log(response.data);
