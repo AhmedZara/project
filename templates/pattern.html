@@ -64,7 +64,7 @@
         methods: {
         onLed:function(obj){
           console.log("ON was called")
-          axios.post('/pattern', {
+          axios.post('/pattern_on', {
             led1:obj.l1,led2:obj.l2,led3:obj.l3,led4:obj.l4,led5:obj.l5,led6:obj.l6
           })
           .then(function (response) {
