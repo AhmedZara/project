@@ -27,13 +27,15 @@ def led():
 def led_on():
 	if request.method == 'POST':
 		body = request.get_json()
-		return jsonify({"status": onLED(body.get('pin'))})
+		onLED(int body.get('pin'))
+	return jsonify({"status": onLED(body.get('pin'))})
 
 @app.route("/pin_off", methods=["POST"])
 def led_off():
 	if request.method == 'POST':
 		body = request.get_json()
-		return jsonify({"status": offLED(body.get('pin'))})
+		offLED(int(body.get('pin'))
+	return jsonify({"status": offLED(body.get('pin'))})
 
 
 # @app.route("/cleanup", methods=["POST"])
