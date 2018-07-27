@@ -68,12 +68,14 @@ def pwmon():
         		for i in range(50):
         			p.ChangeDutyCycle(50-i)
         			time.sleep(0.02)
-        return jsonify({"status": body})   
+
 		except keyboardInterrupt:
 			pass
 
-		p.stop()
 		
+		p.stop()
+		return jsonify({"status": body}) 
+
 
 		
 
