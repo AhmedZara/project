@@ -13,45 +13,42 @@
   <body>
     <div class="container" id="app">
       <h1>LED</h1>
-      <section id = "redLED" >
+      
          <div>
         <h2>RED</h2>
         <div class="form-group">
           <label>Pin1</label>
           <input type="number" name="pin" v-model="current.r1">
         </div>
-        <button class="btn btn-primary" v-on:click='onLed(current)'>On</button>
-        <button class="btn btn-danger" v-on:click='offLed(current)'>Off</button>
+        <button class="btn btn-primary" v-on:click='ronLed(current)'>On</button>
+        <button class="btn btn-danger" v-on:click='roffLed(current)'>Off</button>
       </div>
     
         
-      </section>
-      <section id="yellowLED">
+      
         <div>
             <h2>YELLOW</h2>
             <div class="form-group">
               <label>Pin2</label>
               <input type="number" name="pin" v-model="current.y1">
             </div>
-            <button class="btn btn-primary" v-on:click='onLed(current)'>On</button>
-            <button class="btn btn-danger" v-on:click='offLed(current)'>Off</button>
+            <button class="btn btn-primary" v-on:click='yonLed(current)'>On</button>
+            <button class="btn btn-danger" v-on:click='yoffLed(current)'>Off</button>
           </div>
             <div>
 
         
-      </section>
-      <section id="greenLED">
+      
         <div>
        <h2>GREEN</h2>
               <div class="form-group">
                 <label>Pin3</label>
                 <input type="number" name="pin" v-model="current.g1">
               </div>
-              <button class="btn btn-primary" v-on:click='onLed(current)'>On</button>
-              <button class="btn btn-danger" v-on:click='offLed(current)'>Off</button>
+              <button class="btn btn-primary" v-on:click='gonLed(current)'>On</button>
+              <button class="btn btn-danger" v-on:click='goffLed(current)'>Off</button>
             </div>
-      </section>
-
+      
      
 
     <!-- Optional JavaScript -->
@@ -62,13 +59,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
    <script>
-      var redledApp = new Vue ({
-        el:'#redLED',
+      var app = new Vue ({
+        el:'#app',
         data: {
           message:'LED OFF'
         },
         methods: {
-        onLed:function(obj){
+        ronLed:function(obj){
           console.log("ON was called")
           axios.post('/redpin_on', {
             led:obj.r1
@@ -80,7 +77,7 @@
             console.log(error);
           });
         },
-        offLed: function(obj){
+        roffLed: function(obj){
           console.log("Off was called")
           axios.post('/redpin_off', {
             led:obj.r1
@@ -91,19 +88,8 @@
           .catch(function (error) {
             console.log(error);
           });
-        }   
-      }
-    });
-    </script>
-    <script>
-      var yellowledApp = new Vue ({
-        el:'#yellowLED',
-        data: {
-          message:'LED OFF'
         },
-
-        methods: {
-        onLed:function(obj){
+        yonLed:function(obj){
           console.log("ON was called")
           axios.post('/yellowpin_on', {
             led:obj.y1
@@ -115,7 +101,7 @@
             console.log(error);
           });
         },
-        offLed: function(obj){
+        yoffLed: function(obj){
           console.log("Off was called")
           axios.post('/yellowpin_off', {
             led:obj.y1
@@ -126,18 +112,8 @@
           .catch(function (error) {
             console.log(error);
           });
-        }   
-      }
-    });
-    </script>
-    <script>
-      var greenledApp = new Vue ({
-        el:'#greenLED',
-        data: {
-          message:'LED OFF'
         },
-        methods: {
-        onLed:function(obj){
+        gonLed:function(obj){
           console.log("ON was called")
           axios.post('/greenpin_on', {
             led:obj.g1
@@ -149,7 +125,7 @@
             console.log(error);
           });
         },
-        offLed: function(obj){
+        goffLed: function(obj){
           console.log("Off was called")
           axios.post('/greenpin_off', {
             led:obj.g1
@@ -160,10 +136,9 @@
           .catch(function (error) {
             console.log(error);
           });
-        }   
+        }      
       }
-    });
+    })
     </script>
-  
   </body>
 </html>
