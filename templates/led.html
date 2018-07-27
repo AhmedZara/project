@@ -43,26 +43,26 @@
           onLED:function(obj){
             console.log("ON was called")
             axios.post('/pin_on', {
-        pin:obj,
-        })
-        .then(function (response) {
-        console.log(response.data);
-        })
-      .catch(function (error) {
-        console.log(error);
-         });
+              led:obj.pin,
+              })
+              .then(function (response) {
+              console.log(response.data);
+              })
+            .catch(function (error) {
+              console.log(error);
+               });
           },
           offLED: function(obj){
             console.log("Off was called")
             axios.post('/pin_off', {
-        pin:obj,
-        })
-        .then(function (response) {
-        console.log(response.data);
-        })
-      .catch(function (error) {
-        console.log(error);
-         });
+              led:obj.pin,
+              })
+              .then(function (response) {
+              console.log(response.data);
+              })
+            .catch(function (error) {
+              console.log(error);
+               });
           }   
       }
       })
