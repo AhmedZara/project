@@ -103,7 +103,7 @@ def redled_off():
 		offLED(int(body.get('led')))
 		return jsonify({"status":body})
 
-@app.route("/redpin_on", methods=["POST"])
+@app.route("/yellowpin_on", methods=["POST"])
 def redpin_on():
 	if request.method == 'POST':
 		body = request.get_json()
