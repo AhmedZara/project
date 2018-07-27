@@ -63,18 +63,12 @@ def pwmon():
 		p=GPIO.PWM(int(body.get('led')),100)
 		p.start(0)
 
-		try:
-			while True:
-				for i in range(50):
-					p.ChangeDutyCycle(i)
-            		time.sleep(3)
-        		for i in range(50):
-        			p.ChangeDutyCycle(50-i)
-        			time.sleep(3)
-
-		except keyboardInterrupt:
-			pass
-
+		for i in range(50):
+			p.ChangeDutyCycle(i)
+            time.sleep(3)
+            for i in range(50):
+        		p.ChangeDutyCycle(50-i)
+        		time.sleep(3)
 
 		p.stop()
 		GPIO.cleanup()
