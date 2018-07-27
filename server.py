@@ -57,23 +57,24 @@ def pwmon():
 	if request.method == 'POST':
 		body = request.get_json()
 		GPIO.setup(int(body.get('led')),GPIO.OUT)
-		p=GPIO.PWM(int(body.get('led')),100)
+		p=GPIO.PWM(int(body.get('led')),50)
 		p.start(0)
 
 		try:
 			while True:
-				for i in range(50):
+				for i in range(100):
 					p.ChangeDutyCycle(i)
-            		time.sleep(0.1)
-        		for i in range(50):
-        			p.ChangeDutyCycle(50-i)
-        			time.sleep(0.1)
+            		time.sleep(1)
+        		for i in range(100):
+        			p.ChangeDutyCycle(100-i)
+        			time.sleep(1)
 
 		except keyboardInterrupt:
 			pass
 
 
 		p.stop()
+		GPIO.cleanup()
 		return jsonify({"status": body}) 
 
 
