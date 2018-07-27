@@ -135,7 +135,7 @@ def greenpin_off():
 # Route "/pattern" -> POST => Get the pin  on or off led using RPI
 
 @app.route("/pattern", methods=["GET"])
-def traffic():
+def pattern():
 	if request.method == 'GET':
 		return render_template('traffic.html', mode=GPIO.getmode())
 
