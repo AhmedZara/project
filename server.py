@@ -27,7 +27,7 @@ def led():
 def led_on():
 	if request.method == 'POST':
 		body = request.get_json()
-		onLED(int( body.get('led')))
+		onLED(int(body.get('led')))
 		return jsonify({"status": body})
 
 @app.route("/pin_off", methods=["POST"])
