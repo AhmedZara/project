@@ -56,6 +56,7 @@ def pwm():
 def pwmon():
 	if request.method == 'POST':
 		body = request.get_json()
+		onLED(int(body.get('led')))
 		p=GPIO.PWM(pin,50)
 		p.start(0)
 
@@ -73,7 +74,7 @@ def pwmon():
 
 		p.stop()
 
-		return jsonify({"status": onLED(body.get('pin'))})
+		return jsonify({"status": body})
 
 # Route "/traffic" -> GET -> templates/traffic.html => Display Button for on-off & ask for pin number 
 # Route "/traffic" -> POST => Get the pin  on or off led using RPI

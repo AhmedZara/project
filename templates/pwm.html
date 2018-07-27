@@ -42,16 +42,18 @@
           current: {}
         },
         methods: {
-          onLed: function (obj) {
-            console.log(obj.pin);
-            axios.post('/pwmon', {pin:obj})
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-          },
+        onLed:function(obj){
+          console.log("ON was called")
+          axios.post('/pwmon', {
+            led:obj.pin,
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        },
         }
       })
     </script>
