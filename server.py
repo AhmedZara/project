@@ -65,10 +65,10 @@ def pwmon():
 
         for i in range(50):
             p.ChangeDutyCycle(i)
-            time.sleep(3)
+            time.sleep(1)
             for i in range(50):
                 p.ChangeDutyCycle(50-i)
-                time.sleep(3)
+                time.sleep(5)
 
         p.stop()
         GPIO.cleanup()
