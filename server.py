@@ -97,21 +97,21 @@ def redpin_on():
 		return jsonify({"status": body})
 
 @app.route("/redpin_off", methods=["POST"])
-def redled_off():
+def redpin_off():
 	if request.method == 'POST':
 		body = request.get_json()
 		offLED(int(body.get('led')))
 		return jsonify({"status":body})
 
 @app.route("/yellowpin_on", methods=["POST"])
-def redpin_on():
+def yellowpin_on():
 	if request.method == 'POST':
 		body = request.get_json()
 		onLED(int(body.get('led')))
 		return jsonify({"status": body})
 
 @app.route("/yellowpin_off", methods=["POST"])
-def yellowled_off():
+def yellowpin_off():
 	if request.method == 'POST':
 		body = request.get_json()
 		offLED(int(body.get('led')))
@@ -125,7 +125,7 @@ def greenpin_on():
 		return jsonify({"status": body})
 
 @app.route("/greenpin_off", methods=["POST"])
-def greenled_off():
+def greenpin_off():
 	if request.method == 'POST':
 		body = request.get_json()
 		offLED(int(body.get('led')))
