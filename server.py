@@ -67,10 +67,10 @@ def pwmon():
 			while True:
 				for i in range(50):
 					p.ChangeDutyCycle(i)
-            		time.sleep(0.1)
+            		time.sleep(3)
         		for i in range(50):
         			p.ChangeDutyCycle(50-i)
-        			time.sleep(0.1)
+        			time.sleep(3)
 
 		except keyboardInterrupt:
 			pass
