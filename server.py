@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, render_template, url_for
 import RPi.GPIO as GPIO
+import time
+
 
 app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
