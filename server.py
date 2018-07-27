@@ -83,70 +83,61 @@ def pwmon():
 # Route "/traffic" -> GET -> templates/traffic.html => Display Button for on-off & ask for pin number 
 # Route "/traffic" -> POST => Get the pin  on or off led using RPI
 
-@app.route('/traffic',methods=['GET'])
-def index():
-        return render_template('traffic.html')
+
+@app.route("/traffic", methods=["GET"])
+def traffic():
+	if request.method == 'GET':
+		return render_template('traffic.html', mode=GPIO.getmode())
 
 @app.route("/redpin_on", methods=["POST"])
 def redpin_on():
 	if request.method == 'POST':
 		body = request.get_json()
-		return jsonify({"status": onLED(body.get('pin'))})
+		onLED(int(body.get('led')))
+		return jsonify({"status": body})
 
 @app.route("/redpin_off", methods=["POST"])
-def redpin_off():
+def redled_off():
 	if request.method == 'POST':
 		body = request.get_json()
-		return jsonify({"status": offLED(body.get('pin'))})
+		offLED(int(body.get('led')))
+		return jsonify({"status":body})
 
-@app.route("/yellowpin_on", methods=["POST"])
-def yellowpin_on():
+@app.route("/redpin_on", methods=["POST"])
+def redpin_on():
 	if request.method == 'POST':
 		body = request.get_json()
-		return jsonify({"status": onLED(body.get('pin'))})
+		onLED(int(body.get('led')))
+		return jsonify({"status": body})
 
 @app.route("/yellowpin_off", methods=["POST"])
-def yellowpin_off():
+def yellowled_off():
 	if request.method == 'POST':
 		body = request.get_json()
-		return jsonify({"status": offLED(body.get('pin'))})
+		offLED(int(body.get('led')))
+		return jsonify({"status":body})
 
 @app.route("/greenpin_on", methods=["POST"])
 def greenpin_on():
 	if request.method == 'POST':
 		body = request.get_json()
-		return jsonify({"status": onLED(body.get('pin'))})
+		onLED(int(body.get('led')))
+		return jsonify({"status": body})
 
 @app.route("/greenpin_off", methods=["POST"])
-def greenpin_off():
+def greenled_off():
 	if request.method == 'POST':
 		body = request.get_json()
-		return jsonify({"status": offLED(body.get('pin'))})
+		offLED(int(body.get('led')))
+		return jsonify({"status":body})
 
-@app.route('/leds_on', methods=['GET', 'POST'])
-def leds_on():
-    if request.method =='POST':
-        body=request.get_json()
-        for i in range(0,5):
-            RED.on()
-            time.sleep(3)
-            RED.off()
-            time.sleep(0.5)
-            YELLOW.on()
-            time.sleep(2)
-            YELLOW.off()
-            time.sleep(0.5)
-            GREEN.on()
-            time.sleep(2)
-            GREEN.off()
-            time.sleep(0.5)
-            YELLOW.on()
-            time.sleep(2)
-            YELLOW.off()
 
-        return jsonify({"status": body})
-    else:
-        return jsonify({'status: unavailable'})
+
+@app.route("/cleanup", methods=["POST"])
+def cleanup():
+	if request.method == 'POST':
+		GPIO.cleanup()
+		return jsonify({"status": "Done cleaning the house!"})
 
 
 if __name__ == '__main__':

@@ -70,107 +70,109 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-     var redapp = new Vue({
-        el: '#redLED',
+   <script>
+      var redledApp = new Vue ({
+        el:'#redLED',
         data: {
-          current: {}
+          message:'LED OFF'
         },
         methods: {
-            onLed: function (obj) {
-              console.log(obj.pin);
-              axios.post('/redpin_on', {pin:obj.r1})
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-              },
-            },
-            offLed: function (obj) {
-              console.log(obj.pin);
-              axios.post('/redpin_off',{pin: obj.r1})
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-            },
-            method2:{
-            onLed: function (obj) {
-              console.log(obj.pin);
-              axios.post('/yellowpin_on', {pin:obj.y1})
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-            },
-          offLed: function (obj) {
-              console.log(obj.pin);
-              axios.post('/yellowpin_off',{pin: obj.y1})
-                .then(function (response) {
-                  console.log(response);
-                  })
-                  .catch(function (error) {
-                    console.log(error);
-                  });
-                },
-           },
-           method3:{
-         onLed: function (obj) {
-              console.log(obj.pin);
-              axios.post('/greenpin_on', {pin:obj.g1})
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-          },
-          offLed: function (obj) {
-            console.log(obj.pin);
-            axios.post('/greenpin_off',{pin:obj.g1})
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-            },
-             },
-           })
-    
-
-    
-      </script>
-    
-     <script>
-      var ledsApp = new Vue ({
-        el:'#trafficLEDs',
-        data: {
-          message:'AUTO'
-        },
-        methods: {
-          LEDs:function(obj){
-            console.log("AUTO was called")
-            axios.post('/leds_on', {
-           pin1:obj.r1,pin2:obj.y1,pin3:obj.g1
+        onLed:function(obj){
+          console.log("ON was called")
+          axios.post('/pin_on', {
+            led:obj.pin
           })
           .then(function (response) {
-          console.log(response);
+            console.log(response.data);
           })
-        .catch(function (error) {
-          console.log(error);
-           });
-          
-         
+          .catch(function (error) {
+            console.log(error);
+          });
+        },
+        offLed: function(obj){
+          console.log("Off was called")
+          axios.post('/pin_off', {
+            led:obj.pin
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         }   
       }
-      })
+    });
     </script>
+    <script>
+      var yellowledApp = new Vue ({
+        el:'#yellowLED',
+        data: {
+          message:'LED OFF'
+        },
+
+        methods: {
+        onLed:function(obj){
+          console.log("ON was called")
+          axios.post('/pin_on', {
+            led:obj.pin,
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        },
+        offLed: function(obj){
+          console.log("Off was called")
+          axios.post('/pin_off', {
+            led:obj.pin,
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }   
+      }
+    });
+    </script>
+    <script>
+      var greenledApp = new Vue ({
+        el:'#greenLED',
+        data: {
+          message:'LED OFF'
+        },
+        methods: {
+        onLed:function(obj){
+          console.log("ON was called")
+          axios.post('/pin_on', {
+            led:obj.pin,
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        },
+        offLed: function(obj){
+          console.log("Off was called")
+          axios.post('/pin_off', {
+            led:obj.pin
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }   
+      }
+    });
+    </script>
+  
   </body>
 </html>
