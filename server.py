@@ -133,12 +133,6 @@ def greenpin_off():
 
 
 
-@app.route("/cleanup", methods=["POST"])
-def cleanup():
-	if request.method == 'POST':
-		GPIO.cleanup()
-		return jsonify({"status": "Done cleaning the house!"})
-
 
 if __name__ == '__main__':
 	app.run(debug=True, host='0.0.0.0')
