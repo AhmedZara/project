@@ -43,7 +43,7 @@
           onLED:function(obj){
             console.log("ON was called")
             axios.post('/pin_on', {
-              led:obj.pin,
+              led:obj,
               })
               .then(function (response) {
               console.log(response.data);
@@ -55,7 +55,7 @@
           offLED: function(obj){
             console.log("Off was called")
             axios.post('/pin_off', {
-              led:obj.pin,
+              led:obj,
               })
               .then(function (response) {
               console.log(response.data);
