@@ -56,7 +56,7 @@ def pwm():
 def pwmon():
 	if request.method == 'POST':
 		body = request.get_json()
-		GPIO.setmode(int(body.get('led')),GPIO.OUT)
+		GPIO.setup(int(body.get('led')),GPIO.OUT)
 		p=GPIO.PWM(int(body.get('led')),100)
 		p.start(0)
 
@@ -72,7 +72,7 @@ def pwmon():
 		except keyboardInterrupt:
 			pass
 
-		
+
 		p.stop()
 		return jsonify({"status": body}) 
 
