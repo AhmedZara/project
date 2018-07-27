@@ -131,6 +131,44 @@ def greenpin_off():
 		offLED(int(body.get('led')))
 		return jsonify({"status":body})
 
+# Route "/pattern" -> GET -> templates/pattern.html => Display Button for on-off & ask for pin number 
+# Route "/pattern" -> POST => Get the pin  on or off led using RPI
+
+@app.route("/pattern", methods=["GET"])
+def traffic():
+	if request.method == 'GET':
+		return render_template('traffic.html', mode=GPIO.getmode())
+
+@app.route("/pattern_on", methods=["POST"])
+def pattern_on():
+	if request.method == 'POST':
+		body = request.get_json()
+		for i in range(0,5):
+			onLED(int(body.get('led1')))
+			onLED(int(body.get('led6')))
+			time.sleep(3)
+
+			offLED(int(body.get('led1')))
+			offLED(int(body.get('led6')))
+			time.sleep(0.5)
+
+			onLED(int(body.get('led2')))
+			onLED(int(body.get('led5')))
+			time.sleep(2)
+
+			offLED(int(body.get('led2')))
+			offLED(int(body.get('led5')))
+			time.sleep(0.5)
+
+			onLED(int(body.get('led3')))
+			onLED(int(body.get('led4')))
+			time.sleep(3)
+
+			offLED(int(body.get('led3')))
+			offLED(int(body.get('led4')))
+			time.sleep(0.5)
+		return jsonify({"status": body})
+ 
 
 
 
