@@ -32,38 +32,38 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
     <script>
-    var ledApp = new Vue({
-        el:'#appLED',
-        data: {
-          current: {}
-        },
-        methods: {
-          onLED:function(obj){
-            console.log("ON was called")
-            axios.post('/pin_on', {
-              led:obj.pin,
-              })
-              .then(function (response) {
-              console.log(response.data);
-              })
-            .catch(function (error) {
-              console.log(error);
-               });
-          },
-          offLED: function(obj){
-            console.log("Off was called")
-            axios.post('/pin_off', {
-              led:obj.pin,
-              })
-              .then(function (response) {
-              console.log(response.data);
-              })
-            .catch(function (error) {
-              console.log(error);
-               });
-          }   
-      }
-      });
+		var ledApp = new Vue({
+			el:'#appLED',
+			data: {
+				current: {}
+			},
+			methods: {
+				onLed:function(obj){
+					console.log("ON was called")
+					axios.post('/pin_on', {
+						led:obj.pin,
+					})
+					.then(function (response) {
+						console.log(response.data);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				},
+				offLed: function(obj){
+					console.log("Off was called")
+					axios.post('/pin_off', {
+						led:obj.pin,
+					})
+					.then(function (response) {
+						console.log(response.data);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}   
+			}
+		});
     </script>
   </body>
 </html> 
