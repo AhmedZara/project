@@ -63,12 +63,13 @@ def pwmon():
         p=GPIO.PWM(int(body.get('led')),100)
         p.start(0)
 
+
         for i in range(50):
             p.ChangeDutyCycle(i)
             time.sleep(1)
-            for i in range(50):
-                p.ChangeDutyCycle(50-i)
-                time.sleep(5)
+        for i in range(50):
+            p.ChangeDutyCycle(50-i)
+            time.sleep(5)
 
         p.stop()
         GPIO.cleanup()
