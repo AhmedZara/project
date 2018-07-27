@@ -137,7 +137,7 @@ def greenpin_off():
 @app.route("/pattern", methods=["GET"])
 def pattern():
 	if request.method == 'GET':
-		return render_template('traffic.html', mode=GPIO.getmode())
+		return render_template('pattern.html', mode=GPIO.getmode())
 
 @app.route("/pattern_on", methods=["POST"])
 def pattern_on():
