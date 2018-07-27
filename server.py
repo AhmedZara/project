@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template, url_for
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
@@ -58,7 +58,7 @@ def pwmon():
 		p.start(0)
 
 		try:
-    		while true:
+    		while True:
        			for i in range(100):
             		p.ChangeDutyCycle(i)
             		time.sleep(0.02)
@@ -67,7 +67,7 @@ def pwmon():
            			time.sleep(0.02)
             
 		except keyboardInterrupt:
-     	pass
+			pass
 
 		p.stop()
 
@@ -120,22 +120,22 @@ def greenpin_off():
 def leds_on():
     if request.method =='POST':
         body=request.get_json()
-        # for i in range(0,5):
-            # RED.on()
-            # time.sleep(3)
-            # RED.off()
-            # time.sleep(0.5)
-            # YELLOW.on()
-            # time.sleep(2)
-            # YELLOW.off()
-            # time.sleep(0.5)
-            # GREEN.on()
-            # time.sleep(2)
-            # GREEN.off()
-            # time.sleep(0.5)
-            # YELLOW.on()
-            # time.sleep(2)
-            # YELLOW.off()
+        for i in range(0,5):
+            RED.on()
+            time.sleep(3)
+            RED.off()
+            time.sleep(0.5)
+            YELLOW.on()
+            time.sleep(2)
+            YELLOW.off()
+            time.sleep(0.5)
+            GREEN.on()
+            time.sleep(2)
+            GREEN.off()
+            time.sleep(0.5)
+            YELLOW.on()
+            time.sleep(2)
+            YELLOW.off()
 
         return jsonify({"status": body})
     else:
