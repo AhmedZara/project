@@ -45,7 +45,7 @@
         onLed:function(obj){
           console.log("ON was called")
           axios.post('/pwmon', {
-            led:obj.pin,
+            led:obj.pin
           })
           .then(function (response) {
             console.log(response.data);
