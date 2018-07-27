@@ -79,7 +79,7 @@
         methods: {
         onLed:function(obj){
           console.log("ON was called")
-          axios.post('/pin_on', {
+          axios.post('/redpin_on', {
             led:obj.pin
           })
           .then(function (response) {
@@ -91,7 +91,7 @@
         },
         offLed: function(obj){
           console.log("Off was called")
-          axios.post('/pin_off', {
+          axios.post('/redpin_off', {
             led:obj.pin
           })
           .then(function (response) {
@@ -114,8 +114,8 @@
         methods: {
         onLed:function(obj){
           console.log("ON was called")
-          axios.post('/pin_on', {
-            led:obj.pin,
+          axios.post('/yellowpin_on', {
+            led:obj.pin
           })
           .then(function (response) {
             console.log(response.data);
@@ -126,8 +126,8 @@
         },
         offLed: function(obj){
           console.log("Off was called")
-          axios.post('/pin_off', {
-            led:obj.pin,
+          axios.post('/yellowpin_off', {
+            led:obj.pin
           })
           .then(function (response) {
             console.log(response.data);
@@ -148,8 +148,8 @@
         methods: {
         onLed:function(obj){
           console.log("ON was called")
-          axios.post('/pin_on', {
-            led:obj.pin,
+          axios.post('/greenpin_on', {
+            led:obj.pin
           })
           .then(function (response) {
             console.log(response.data);
@@ -160,7 +160,7 @@
         },
         offLed: function(obj){
           console.log("Off was called")
-          axios.post('/pin_off', {
+          axios.post('/greenpin_off', {
             led:obj.pin
           })
           .then(function (response) {
