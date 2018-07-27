@@ -42,7 +42,8 @@
         methods: {
           onLed: function (obj) {
             console.log(obj.pin);
-            axios.post('/pin_on', {pin:obj})
+            axios.post("/pin_on", {
+              pin:obj})
               .then(function (response) {
                 console.log(response);
               })
@@ -52,7 +53,8 @@
           },
           offLed: function (obj) {
             console.log(obj.pin);
-            axios.post('/pin_off',{pin: obj})
+            axios.post("/pin_off",{
+              pin: obj})
               .then(function (response) {
                 console.log(response);
               })
