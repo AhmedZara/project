@@ -59,10 +59,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
    <script>
-      var ledApp = new Vue ({
-        el:'#app',
+       var app = new Vue({
+        el: '#app',
         data: {
-          message:'LED OFF'
+          current: {}
         },
         methods: {
         ronLed:function(obj){
