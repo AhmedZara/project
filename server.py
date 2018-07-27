@@ -50,31 +50,32 @@ def cleanup():
 @app.route("/pwm", methods=["GET"])
 def pwm():
 	if request.method == 'GET':
-		return render_template('pwm.html')
+		return render_template('pwm.html',mode=GPIO.getmode())
 
 @app.route("/pwmon", methods=["POST"])
 def pwmon():
 	if request.method == 'POST':
 		body = request.get_json()
-		onLED(int(body.get('led')))
-		p=GPIO.PWM(pin,50)
+		GPIO.setmode(int(body.get('led')),GPIO.OUT)
+		p=GPIO.PWM(int(body.get('led')),100)
 		p.start(0)
 
 		try:
 			while True:
-				for i in range(100):
+				for i in range(50):
 					p.ChangeDutyCycle(i)
             		time.sleep(0.02)
-        		for i in range(100):
-        			p.ChangeDutyCycle(100-i)
+        		for i in range(50):
+        			p.ChangeDutyCycle(50-i)
         			time.sleep(0.02)
-            
+        return jsonify({"status": body})   
 		except keyboardInterrupt:
 			pass
 
 		p.stop()
+		
 
-		return jsonify({"status": body})
+		
 
 # Route "/traffic" -> GET -> templates/traffic.html => Display Button for on-off & ask for pin number 
 # Route "/traffic" -> POST => Get the pin  on or off led using RPI
