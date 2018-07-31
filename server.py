@@ -161,8 +161,8 @@ def pattern_on():
             offLED(int(body.get('led4')))
             time.sleep(0.5)
         return jsonify({"status": body})
- 
- @app.route("/cleanup", methods=["POST"]) # Route "/cleanup" -> deletes all the data in the end 
+
+@app.route("/cleanup", methods=["POST"]) # Route "/cleanup" -> deletes all the data in the end 
 def cleanup():
     if request.method == 'POST':
         GPIO.cleanup()
