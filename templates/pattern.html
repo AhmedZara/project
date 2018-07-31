@@ -1,84 +1,85 @@
-<!doctype html>
-<html lang="en">
+<!doctype html> <!-- starting of the code -->
+<html lang="en"> <!-- language chosen is english -->
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" 
+    integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 
     <title>ZARA</title>
   </head>
   <body>
-    <div class="container" id="app">
-      <h1>LED Pattern</h1>
+      <div class="container" id="app"> <!-- a class "container" is used for proper padding -->
+        <h1>LED Pattern</h1>b <!-- provides Heading -->
 
-        <div class="form-group">
-          <label>Pin1</label>
-          <input type="number" name="pin" v-model="current.l1">
-        </div>
+          <div class="form-group"> <!-- To take pin1 value from the user -->
+           <label>Pin1</label> <!-- used to display content -->
+            <input type="number" name="pin" v-model="current.l1">
+          </div>
 
-         <div class="form-group">
+         <div class="form-group"> <!-- To take pin2 value from the user -->
               <label>Pin2</label>
               <input type="number" name="pin" v-model="current.l2">
           </div>
 
-          <div class="form-group">
+          <div class="form-group"> <!-- To take pin3 value from the user -->
                 <label>Pin3</label>
                 <input type="number" name="pin" v-model="current.l3">
               </div>
 
 
-            <div class="form-group">
+            <div class="form-group"> <!-- To take pin4 value from the user -->
              <label>Pin4</label>
              <input type="number" name="pin" v-model="current.l4">
             </div>
         
-           <div class="form-group">
+           <div class="form-group"> <!-- To take pin5 value from the user -->
               <label>Pin5</label>
               <input type="number" name="pin" v-model="current.l5">
             </div>
 
-            <div class="form-group">
-                <label>Pin6</label>
-                <input type="number" name="pin" v-model="current.l6">
-              </div>
-                <button class="btn btn-primary" v-on:click='onLed(current)'>On</button>
+            <div class="form-group"> <!-- To take pin6 value from the user -->
+                    <label>Pin6</label>
+                    <input type="number" name="pin" v-model="current.l6">
             </div>
+            <button class="btn btn-primary" v-on:click='onLed(current)'>On</button> <!-- Button to accept input -->
+           </div>
            
 
-<!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-      var app = new Vue({
-        el: '#app',
-        data: {
-          current: {}
-        },
-        methods: {
-        onLed:function(obj){
-          console.log("ON was called")
-          axios.post('/pattern_on', {
-            led1:obj.l1,led2:obj.l2,led3:obj.l3,led4:obj.l4,led5:obj.l5,led6:obj.l6
-          })
-          .then(function (response) {
-            console.log(response.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        },
-        }
-      })
-    </script>
-  </body>
-</html>      
+        <script>  /*defines the jave script*/
+              var app = new Vue({
+                el: '#app',
+                data: {
+                  current: {}
+                },
+                methods: {
+                onLed:function(obj){ /*this function is used to on led*/
+                  console.log("ON was called")
+                  axios.post('/pattern_on', { /*routes to the pattern_on part from server.py*/
+                    led1:obj.l1,led2:obj.l2,led3:obj.l3,led4:obj.l4,led5:obj.l5,led6:obj.l6 /*provides input values to back end*/
+                  })
+                  .then(function (response) {
+                    console.log(response.data);
+                  })
+                  .catch(function (error) { /*exception case; used to display error*/
+                    console.log(error);
+                  });
+                },
+                }
+              })
+       </script>
+  </body> <!-- end of body -->
+</html>      <!-- end of html code -->
     
         
       

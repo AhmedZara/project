@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!doctype html> <!-- starting of the code -->
+<html lang="en"> <!-- language chosen is english -->
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,30 +10,30 @@
 
     <title>ZARA</title>
   </head>
-  <body>
-    <div class="container" id="app">
-      <h1> Traffic LED</h1>
+  <body> <!-- beginning od body -->
+    <div class="container" id="app"> <!-- a class "container" is used for proper padding -->
+      <h1> Traffic LED</h1> <!-- provides Heading -->
       
-         <div>
-        <h2>RED</h2>
-        <div class="form-group">
+         <div> <!-- used for boxifying -->
+        <h2>RED</h2> <!-- used to display content -->
+        <div class="form-group"> <!-- To take pin1 value from the user -->
           <label>Pin1</label>
           <input type="number" name="pin" v-model="current.r1">
         </div>
-        <button class="btn btn-primary" v-on:click='ronLed(current)'>On</button>
-        <button class="btn btn-danger" v-on:click='roffLed(current)'>Off</button>
+        <button class="btn btn-primary" v-on:click='ronLed(current)'>On</button> <!-- button for ON -->
+        <button class="btn btn-danger" v-on:click='roffLed(current)'>Off</button> <!-- button for OFF -->
       </div>
     
         
       
         <div>
             <h2>YELLOW</h2>
-            <div class="form-group">
+            <div class="form-group"> <!-- To take pin2 value from the user -->
               <label>Pin2</label>
               <input type="number" name="pin" v-model="current.y1">
             </div>
-            <button class="btn btn-primary" v-on:click='yonLed(current)'>On</button>
-            <button class="btn btn-danger" v-on:click='yoffLed(current)'>Off</button>
+            <button class="btn btn-primary" v-on:click='yonLed(current)'>On</button> <!-- button for ON -->
+            <button class="btn btn-danger" v-on:click='yoffLed(current)'>Off</button> <!-- button for Off -->
           </div>
             <div>
 
@@ -41,12 +41,12 @@
       
         <div>
        <h2>GREEN</h2>
-              <div class="form-group">
+              <div class="form-group"> <!-- To take pin3 value from the user -->
                 <label>Pin3</label>
                 <input type="number" name="pin" v-model="current.g1">
               </div>
-              <button class="btn btn-primary" v-on:click='gonLed(current)'>On</button>
-              <button class="btn btn-danger" v-on:click='goffLed(current)'>Off</button>
+              <button class="btn btn-primary" v-on:click='gonLed(current)'>On</button> <!-- button for ON -->
+              <button class="btn btn-danger" v-on:click='goffLed(current)'>Off</button> <!-- button for OFF -->
             </div>
       
      
@@ -58,65 +58,65 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-   <script>
+   <script>  /*defines the jave script*/
        var app = new Vue({
         el: '#app',
         data: {
           current: {}
         },
         methods: {
-        ronLed:function(obj){
+        ronLed:function(obj){ /*function to ON RED LED*/
           console.log("ON was called")
-          axios.post('/redpin_on', {
+          axios.post('/redpin_on', { /*routes to redpin_on in the back end*/
             led:obj.r1
           })
           .then(function (response) {
             console.log(response.data);
           })
-          .catch(function (error) {
+          .catch(function (error) { /*exception case; used to display error*/
             console.log(error);
           });
         },
-        roffLed: function(obj){
+        roffLed: function(obj){ /*function to ON RED LED*/
           console.log("Off was called")
-          axios.post('/redpin_off', {
-            led:obj.r1
+          axios.post('/redpin_off', { /*routes to redpin_off in the back end*/
+            led:obj.r1 /*provides input value to back end*/
           })
           .then(function (response) {
             console.log(response.data);
           })
-          .catch(function (error) {
+          .catch(function (error) { /*exception case; used to display error*/
             console.log(error);
           });
         },
-        yonLed:function(obj){
+        yonLed:function(obj){ /*function to ON YELLOW LED*/
           console.log("ON was called")
-          axios.post('/yellowpin_on', {
-            led:obj.y1
+          axios.post('/yellowpin_on', { /*routes to yellowpin_on in the back end*/
+            led:obj.y1 /*provides input value to back end*/
           })
           .then(function (response) {
             console.log(response.data);
           })
-          .catch(function (error) {
+          .catch(function (error) { /*exception case; used to display error*/
             console.log(error);
           });
         },
-        yoffLed: function(obj){
+        yoffLed: function(obj){  /*function to OFF YELLOW LED*/
           console.log("Off was called")
-          axios.post('/yellowpin_off', {
-            led:obj.y1
+          axios.post('/yellowpin_off', { /*routes to yellowpin_off in the back end*/
+            led:obj.y1 /*provides input value to back end*/
           })
           .then(function (response) {
             console.log(response.data);
           })
-          .catch(function (error) {
+          .catch(function (error) { /*exception case; used to display error*/
             console.log(error);
           });
         },
-        gonLed:function(obj){
+        gonLed:function(obj){  /*function to ON GREEN LED*/
           console.log("ON was called")
-          axios.post('/greenpin_on', {
-            led:obj.g1
+          axios.post('/greenpin_on', { /*routes to greenpin_on in the back end*/
+            led:obj.g1 /*provides input value to back end*/
           })
           .then(function (response) {
             console.log(response.data);
@@ -125,20 +125,20 @@
             console.log(error);
           });
         },
-        goffLed: function(obj){
+        goffLed: function(obj){  /*function to OFF GREEN LED*/
           console.log("Off was called")
-          axios.post('/greenpin_off', {
-            led:obj.g1
+          axios.post('/greenpin_off', {  /*routes to greenpin_off in the back end*/
+            led:obj.g1 /*provides input value to back end*/
           })
           .then(function (response) {
             console.log(response.data);
           })
-          .catch(function (error) {
+          .catch(function (error) { /*exception case; used to display error*/
             console.log(error);
           });
         },      
       }
     })
     </script>
-  </body>
-</html>
+  </body>  <!-- end of body -->
+</html>      <!-- end of html code -->

@@ -1,70 +1,67 @@
-<!doctype html>
-<html lang="en">
+<!doctype html>  <!-- starting of the code -->
+<html lang="en">  <!-- language chosen is english -->
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" 
+    integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 
     <title>ZARA</title>
   </head>
   <body>
-    <div class="container" id="appLED">
-      <h1>LED</h1>
+    <div class="container" id="appLED"> <!-- a class "container" is used for proper padding -->
+      <h1>LED</h1> <!-- provides Heading -->
       
-      <div>
-        <div class="form-group">
-          <label>Pin</label>
+      <div>  <!-- used for boxifying -->
+        <div class="form-group"> <!-- To take pin value from the user -->
+          <label>Pin</label> <!-- used to display content -->
           <input type="number" name="pin" v-model="current.pin">
         </div>
-        <button class="btn btn-primary" v-on:click='onLed(current)'>On</button>
-        <button class="btn btn-danger" v-on:click='offLed(current)'>Off</button>
+        <button class="btn btn-primary" v-on:click='onLed(current)'>On</button> <!-- button for ON -->
+        <button class="btn btn-danger" v-on:click='offLed(current)'>Off</button> <!-- button for OFF -->
       </div>
     </div>
-    
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
-    <script>
+    <script>  /*defines the jave script*/
 		var ledApp = new Vue({
 			el:'#appLED',
 			data: {
 				current: {}
 			},
 			methods: {
-				onLed:function(obj){
+				onLed:function(obj){  /*this function is used to on led*/
 					console.log("ON was called")
-					axios.post('/pin_on', {
-						led:obj.pin,
+					axios.post('/pin_on', {  /*routes to the pin_on part from server.py*/
+						led:obj.pin,  /*provides input values to back end*/
 					})
 					.then(function (response) {
 						console.log(response.data);
 					})
-					.catch(function (error) {
+					.catch(function (error) { /*exception case; used to display error*/
 						console.log(error);
 					});
 				},
 				offLed: function(obj){
-					console.log("Off was called")
+					console.log("Off was called") /*this function is used to off led*/
 					axios.post('/pin_off', {
-						led:obj.pin,
+						led:obj.pin, /*provides input values to back end*/
 					})
 					.then(function (response) {
 						console.log(response.data);
 					})
-					.catch(function (error) {
+					.catch(function (error) { /*exception case; used to display error*/
 						console.log(error);
 					});
 				}   
 			}
 		});
     </script>
-  </body>
-</html> 
+  </body>  <!-- end of body -->
+</html> <!-- en dof html code -->
 
